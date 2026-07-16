@@ -23,6 +23,11 @@ class Program
             Console.Write("What would you like to do? ");
             choice = Console.ReadLine();
 
+            if (choice == null)
+            {
+                choice = "5";
+            }
+
             if (choice == "1")
             {
                 string prompt = promptGenerator.GetRandomPrompt();
@@ -30,14 +35,10 @@ class Program
                 Console.Write("> ");
                 string response = Console.ReadLine();
 
-                Console.Write("How would you describe your mood today? ");
-                string mood = Console.ReadLine();
-
                 Entry entry = new Entry();
                 entry._date = DateTime.Now.ToShortDateString();
                 entry._promptText = prompt;
                 entry._entryText = response;
-                entry._mood = mood;
 
                 journal.AddEntry(entry);
             }
